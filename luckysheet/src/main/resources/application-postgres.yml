@@ -6,9 +6,9 @@ showSql: true
 
 spring:
   redis:
-    host: 127.0.0.1
-    port: 3307
-    password: 123456
+    host: 10.35.177.178
+    port: 6379
+    password:
     timeout: 10000ms
     lettuce:
       pool:
@@ -16,15 +16,15 @@ spring:
         max-wait: -1ms
         max-idle: 8
         min-idle: 0
-    database: 0
+    database: 7
 
 db:
   postgre:
     druid:
-      url: jdbc:postgresql://127.0.0.1:3306/luckysheetdb?useSSL=false
+      url: jdbc:postgresql://10.12.50.20:5432/luckysheetdb
       driverClassName: org.postgresql.Driver
       username: postgres
-      password: 123456
+      password: 26TrjQXPRG7JMQOO
       # 初始化大小，最小，最大
       initial-size: 8
       min-idle: 1

@@ -5,7 +5,8 @@ server:
     context-path: /luckysheet
 spring:
   profiles:
-    active: @profiles.active@
+#    active: @profiles.active@
+    active: postgres
   application:
     name: web
   jackson:

@@ -17,15 +17,17 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     public static String servertype;
 
+    public static final String URL_PREFIX = "/websocket/luckysheet/";
+
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         //1.注册WebSocket
         //设置websocket的地址
-        String websocket_url = "/websocket/luckysheet";
+        String websocket_url = URL_PREFIX + "**";
         //注册Handler
         registry.addHandler(getMyWebSocketHandler(), websocket_url).
                 //注册Interceptor
-                addInterceptors(getMyWebSocketInterceptor())
+                        addInterceptors(getMyWebSocketInterceptor())
                 //配置*代表允许所有的ip进行调用
                 .setAllowedOrigins("*");
 
@@ -35,27 +37,27 @@ public class WebSocketConfig implements WebSocketConfigurer {
         //注册Handler
         registry.addHandler(getMyWebSocketHandler(), sockjs_url).
                 //注册Interceptor
-                addInterceptors(getMyWebSocketInterceptor())
+                        addInterceptors(getMyWebSocketInterceptor())
                 //配置*代表允许所有的ip进行调用
                 .setAllowedOrigins("*").withSockJS();
 
         //获取系统ip
-        log.info("registerWebSocketHandlers:"+servertype);
-        if(servertype!=null && servertype.equals("weblogic")){
-            MyWebSocketHandler.ipAndPort= IpAndPortUtil.getIpWeblogic();
-        }else{
-            MyWebSocketHandler.ipAndPort= IpAndPortUtil.getIpAddressAndPort();
+        log.info("registerWebSocketHandlers:" + servertype);
+        if (servertype != null && servertype.equals("weblogic")) {
+            MyWebSocketHandler.ipAndPort = IpAndPortUtil.getIpWeblogic();
+        } else {
+            MyWebSocketHandler.ipAndPort = IpAndPortUtil.getIpAddressAndPort();
         }
 
     }
 
     @Bean
-    public MyWebSocketHandler getMyWebSocketHandler(){
+    public MyWebSocketHandler getMyWebSocketHandler() {
         return new MyWebSocketHandler();
     }
 
     @Bean
-    public MyWebSocketInterceptor getMyWebSocketInterceptor(){
+    public MyWebSocketInterceptor getMyWebSocketInterceptor() {
         return new MyWebSocketInterceptor();
     }
 

@@ -214,6 +214,7 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 
     private void openConn(WebSocketSession session) {
         //创建一个连接窗口，并加入的队列中
+        String userName = getUserName(session);
         WSUserModel ws = new WSUserModel(session);
         WSUserModel.webSocketMapAdd(USER_SOCKET_SESSION_MAP, ws);
         addOnlineCount();           //在线数加1
@@ -257,6 +258,10 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
         } catch (Exception e) {
             log.error("openConn--Exception:" + e);
         }
+    }
+
+    private String getUserName(WebSocketSession session) {
+        return session.getUri().getPath();
     }
 
     private void closeConn(WebSocketSession session, boolean isError) {

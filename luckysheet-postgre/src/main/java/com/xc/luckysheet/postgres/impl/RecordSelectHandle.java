@@ -273,7 +273,7 @@ public class RecordSelectHandle extends BaseHandle implements IRecordSelectHandl
             }
             sql=sql+" and p.is_delete=0 ";
 
-            List<Map<String, Object>> list=jdbcTemplate_postgresql.queryForList(sql, Arrays.asList(_param));
+            List<Map<String, Object>> list=jdbcTemplate_postgresql.queryForList(sql, _param.toArray());
             List<JSONObject> result=new ArrayList<JSONObject>();
             for (Map<String, Object> map : list) {
                 result.add(getDBObjectFromMap(map));
