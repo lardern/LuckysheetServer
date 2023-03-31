@@ -22,14 +22,14 @@ public class ScheduleService {
 
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    @Scheduled(cron = "0 */5 * * * *")
+//    @Scheduled(cron = "0 */5 * * * *")
     public void test(){
         System.out.println(format.format(new Date()));
     }
 
 
 
-    @Scheduled(cron = "0 0 1 * * *")
+//    @Scheduled(cron = "0 0 1 * * *")
     public void pgInit(){
         jfGridUpdateService.initTestData();
         System.out.println(format.format(new Date())+" luckysheet table init!!!");
