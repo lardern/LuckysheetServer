@@ -8,6 +8,12 @@ pipeline {
                 name: "git_code_url",
                 defaultValue: "http://10.35.161.175/paas/luckysheetserver.git"
         )
+
+        string(
+                name: "branch",
+                defaultValue: "dev-pg"
+        )
+
         string(
                 name: "harbor_url",
                 defaultValue: "habor.wr.goldwind.com.cn:5000"
@@ -67,7 +73,7 @@ pipeline {
                     steps {
                         dir('code') {
                             // 代码仓库所在分支
-                            git branch: "master", url: "${params.git_code_url}"
+                            git branch: "${params.branch}", url: "${params.git_code_url}"
                         }
                     }
                 }
