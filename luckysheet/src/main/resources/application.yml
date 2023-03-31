@@ -1,8 +1,8 @@
 # 配置server参数
 server:
-  port: 9004
+  port: 8080
   servlet:
-    context-path: /luckysheet
+    context-path: /
 spring:
   profiles:
 #    active: @profiles.active@
